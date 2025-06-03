@@ -31,8 +31,10 @@ TABLESPACE pg_default;
     npm install cryptr
     npm install jsonwebtoken
     npm i body-parser
+    install K6 https://k6.io/docs/getting-started/installation
+    npm install -D @apideck/postman-to-k6
 
-## import 999931 records from people.v2.csv to people table
+## import 999931 records to people table from https://github.com/OtusTeam/highload/blob/master/homework/people.v2.csv
 
 7. Run server
 
