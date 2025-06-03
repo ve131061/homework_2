@@ -1,0 +1,41 @@
+{
+	"id": "b695bc21-8825-4e46-b57c-5f572411aa19",
+	"name": "homework_2",
+	"timestamp": "2025-05-23T11:51:02.506Z",
+	"collection_id": "0-0954c273-e5d3-4bda-b6a0-be9fcfeb158c",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "f00083ee-eb2d-47a8-9c06-fae79c45fb88",
+			"name": "http://localhost:3000/api/user/search",
+			"time": 81,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				135,
+				81
+			],
+			"allTests": [
+				{},
+				{}
+			]
+		}
+	],
+	"count": 2,
+	"totalTime": 216,
+	"collection": {
+		"requests": [
+			{
+				"id": "f00083ee-eb2d-47a8-9c06-fae79c45fb88",
+				"method": "GET"
+			}
+		]
+	}
+}

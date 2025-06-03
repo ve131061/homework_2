@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "0954c273-e5d3-4bda-b6a0-be9fcfeb158c",
+		"name": "homework_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/user/search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "jwt",
+						"value": "eyJhbGciOiJIUzI1NiJ9.NGRhZTk2NzctMjM0ZC00Yzc2LWIyMjItNDA3NjZhY2UxOTM0.YF9Dy56pIYwOocxo7EAvcdnNggfEPLoiehnmnnQP9BY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\":\"Лев\",\r\n    \"second_name\":\"Абрамов\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

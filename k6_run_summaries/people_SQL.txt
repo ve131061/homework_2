@@ -1,0 +1,25 @@
+-- Table: public.people
+
+-- DROP TABLE IF EXISTS public.people;
+
+CREATE TABLE IF NOT EXISTS public.people
+(
+    second_name character varying COLLATE pg_catalog."default",
+    first_name character varying COLLATE pg_catalog."default",
+    age character varying COLLATE pg_catalog."default",
+    city character varying COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.people
+    OWNER to myuser;
+-- Index: idx_last_first
+
+-- DROP INDEX IF EXISTS public.idx_last_first;
+
+CREATE INDEX IF NOT EXISTS idx_last_first
+    ON public.people USING btree
+    (second_name COLLATE pg_catalog."default" ASC NULLS LAST, first_name COLLATE pg_catalog."default" ASC NULLS LAST)
+    WITH (deduplicate_items=True)
+    TABLESPACE pg_default;
