@@ -1,4 +1,4 @@
-## homework_1 
+## homework_2
 Course: Highload Architect
 Ершов Виктор Анатольевич
 21.05.2025
@@ -12,37 +12,56 @@ Course: Highload Architect
     CREATE USER myuser WITH ENCRYPTED PASSWORD 'qwerty';
     GRANT ALL PRIVILEGES ON DATABASE mydatabase TO myuser;
 
-    CREATE TABLE IF NOT EXISTS public.users
+CREATE TABLE IF NOT EXISTS public.people
 (
-    first_name character varying COLLATE pg_catalog."default" NOT NULL,
-    second_name character varying COLLATE pg_catalog."default" NOT NULL,
-    sex character varying COLLATE pg_catalog."default",
-    city character varying COLLATE pg_catalog."default",
-    interests character varying COLLATE pg_catalog."default",
-    password character varying COLLATE pg_catalog."default" NOT NULL,
-    id uuid NOT NULL DEFAULT gen_random_uuid(),
-    age character varying COLLATE pg_catalog."default"
+    second_name character varying COLLATE pg_catalog."default",
+    first_name character varying COLLATE pg_catalog."default",
+    age character varying COLLATE pg_catalog."default",
+    city character varying COLLATE pg_catalog."default"
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.users
-    OWNER to myuser;
+5. Clone homework_2 repoditory from: https://github.com/ve131061/homework_2.git branch master
 
-5. Clone homework_1 repoditory from: https://github.com/ve131061/homework_1.git branch master
-
-6.  cd cd <homework_1 dir>
+6.  cd cd <homework_2 dir>
     npm init -y
     npm install express pg dotenv
     npm install express-validator
     npm install cryptr
     npm install jsonwebtoken
+    npm i body-parser
 
-## Run
+## import 999931 records from people.v2.csv to people table
+
+7. Run server
 
     node ./src/server.js
 
-## Postman Collection
+8. Run K6 test tool (no index)
 
-use file homework_1.postman_collection.json
+k6 run -i 1 --vus 1 k6-script.js —summary-export=summary.json
 
+i - iterations 1,10,100,100
+vus - virtual users 1,10,100,100 (i=vus)
+
+
+9. Review test Summaries
+
+see Test Summaries in ./k6_run_summaries
+
+10. Create Index
+
+ALTER TABLE IF EXISTS public.people
+    OWNER to myuser;
+-- Index: idx_last_first
+
+-- DROP INDEX IF EXISTS public.idx_last_first;
+
+CREATE INDEX IF NOT EXISTS idx_last_first
+    ON public.people USING btree
+    (second_name COLLATE pg_catalog."default" ASC NULLS LAST, first_name COLLATE pg_catalog."default" ASC NULLS LAST)
+    WITH (deduplicate_items=True)
+    TABLESPACE pg_default;
+
+11. Re-run 8-9
