@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS public.people
 
 TABLESPACE pg_default;
 
-5. Clone homework_2 repoditory from: https://github.com/ve131061/homework_2.git branch master
+5. Clone homework_2 repository from: https://github.com/ve131061/homework_2.git branch master
 
 6.  cd cd <homework_2 dir>
     npm init -y
@@ -40,7 +40,7 @@ TABLESPACE pg_default;
 
     node ./src/server.js
 
-8. Run K6 test tool (no index)
+8. Run K6 test tool
 
 k6 run -i 1 --vus 1 k6-script.js —summary-export=summary.json
 
